@@ -1,4 +1,4 @@
-A simple Weather App made using NextJS and Tailwind. API used is https://open-meteo.com/. 
+A simple Weather App made using NextJS,TypeScipt and Tailwind. API used is https://open-meteo.com/. 
 
 ## Getting Started
 
