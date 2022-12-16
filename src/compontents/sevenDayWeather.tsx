@@ -7,6 +7,7 @@ const sevenDayWeather = (props: Weather | undefined): JSX.Element[] => {
     weatherTable.push(
       <li>
         {weatherIcon(props?.daily.weathercode[i - 1])}
+        
         <p>Temperatue at 12:00:</p>
         {props?.hourly.temperature_2m[i * 12]}°C
       </li>

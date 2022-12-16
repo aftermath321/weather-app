@@ -1,11 +1,9 @@
-const fetchLocation = () => {
-  fetch(
-    "https://api.open-meteo.com/v1/forecast?latitude=55.68&longitude=12.57&hourly=temperature_2m"
-  )
+const fetchLocation = (props: string) => {
+  fetch("https://geocoding-api.open-meteo.com/v1/search?name=Ringsted")
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      return data;
+    .then((location) => {
+      console.log(location);
+      return location;
     })
     .catch((err) => console.log(err));
 };

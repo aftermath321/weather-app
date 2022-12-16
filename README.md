@@ -1,4 +1,4 @@
-A simple Weather App made using NextJS,TypeScipt and Tailwind. API used is https://open-meteo.com/. 
+A simple Weather App made using NextJS,TypeScipt and Tailwind. API used is https://open-meteo.com/.
 
 ## Getting Started
 
@@ -15,3 +15,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Future
 
 I am planning on deploying the app on Vercel, I will update this file accordingly and link to the live demo on my webpage (www.michalkielbasa.com).
+
+## Assets
+
+I don't own icons used, I found them at:
+
+https://www.flaticon.com/free-animated-icons/weather

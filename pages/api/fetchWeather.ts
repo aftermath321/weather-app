@@ -2,8 +2,13 @@ import fetchLocation from "./fetchLocation";
 
 const fetchWeather = () => {
   fetch(
-    "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={252a333959339cc025eb75126d55773f}"
-  ).then();
+    "https://api.open-meteo.com/v1/forecast?latitude=55.68&longitude=12.57&hourly=temperature_2m"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.log(err));
 };
-
-export default fetchWeather;
+export default fetchLocation;
