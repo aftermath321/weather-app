@@ -36,11 +36,7 @@ export default function Home() {
 
   const errorMessage = () => {
     if (error == true) {
-      return (
-        <p className="text-red-500 text-2xl bg-green-500 w-[150px] h-[150px]">
-          Please enter a correct city name!
-        </p>
-      );
+      return <p className=" text-2xl">Please enter a correct city name!</p>;
     } else {
       return null;
     }
@@ -56,7 +52,9 @@ export default function Home() {
                 key={index}
                 onClick={function () {
                   getWeather(place);
+                  setMenu(false);
                 }}
+                className="cursor-pointer divide-x-2 divide-black"
               >
                 {place.name} {place.population} {place.country}
               </li>
@@ -64,39 +62,73 @@ export default function Home() {
           })}
         </ul>
       );
-    } else {
-      return null;
     }
   };
 
   return (
-    <div className="w-screen h-screen bg-red-300">
-      <div className="flex w-full h-[150px] justify-center items-center">
-        <>{errorMessage()}</>
+    <div className="w-screen h-screen bg-white flex-col flex items-center">
+      <>{errorMessage()}</>
+      <div className="py-8 ">
+        <div className="flex w-full h-[10vh] justify-center items-center ">
+          <form onSubmit={(e) => e.preventDefault()} className="space-x-4">
+            <input
+              type="text"
+              placeholder="Enter city name..."
+              onChange={(e) => setCity(e.target.value)}
+              className="h-[40px] border-black border-2 rounded-lg px-2"
+            ></input>
+            <button
+              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-black border-2 hover:bg-cyan-400 hover:duration-200 hover:shadow-cyan-300 hover:shadow-md"
+              onClick={getLocation}
+            >
+              Search
+            </button>
+          </form>
+        </div>
 
-        <form onSubmit={(e) => e.preventDefault()}>
-          <button
-            className="w-[75px] h-[60px] bg-white rounded-lg p-2 border-black border-2"
-            onClick={getLocation}
-          >
-            Locate me
-          </button>
-          <input type="text" onChange={(e) => setCity(e.target.value)}></input>
-        </form>
+        <div
+          className={
+            menu
+              ? "border-black border-2 flex justify-center items-center w-[40vw]"
+              : "hidden border-none"
+          }
+        >
+          {dropMenu()}
+        </div>
       </div>
-      <div>{dropMenu()}</div>
-      <div className="flex justify-center items-center w-[80%] h-[60%] bg-yellow-300">
-        <div className="w-full h-full text-center grid grid-rows-2">
-          <ul className="h-[30%] grid grid-cols-7 bg-yellow-900 py-4">
-            <li key={1}>Day 1</li>
-            <li key={2}>Day 2</li>
-            <li key={3}>Day 3</li>
-            <li key={4}>Day 4</li>
-            <li key={5}>Day 5</li>
-            <li key={6}>Day 6</li>
-            <li key={7}>Day 7</li>
+      <div
+        className={
+          weather
+            ? "w-[80vw] h-[40vh] border-black border-2 rounded-lg flex justify-center items-center"
+            : "hidden border-none"
+        }
+      >
+        <div className="w-full h-full text-center grid grid-rows-4 ">
+          <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-black border-2 divide-x-2 divide-black">
+            <li key={1} className="h-full flex justify-center items-center">
+              Day 1
+            </li>
+            <li key={2} className="h-full flex justify-center items-center">
+              Day 2
+            </li>
+            <li key={3} className="h-full flex justify-center items-center">
+              Day 3
+            </li>
+            <li key={4} className="h-full flex justify-center items-center">
+              Day 4
+            </li>
+            <li key={5} className="h-full flex justify-center items-center">
+              Day 5
+            </li>
+            <li key={6} className="h-full flex justify-center items-center">
+              Day 6
+            </li>
+            <li key={7} className="h-full flex justify-center items-center">
+              Day 7
+            </li>
           </ul>
-          <ul className="h-full grid grid-cols-7 bg-yellow-500 py-4">
+
+          <ul className="h-full grid grid-cols-7 row-span-3 border-black border-2 divide-x-2 divide-black">
             {sevenDayWeather(weather)}
           </ul>
         </div>
