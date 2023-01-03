@@ -23,14 +23,18 @@ export default function Home() {
       setMenu(false);
       setError(true);
     } else {
-      setError(false);
+      
       let locationData = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
       );
       let locationJSON = await locationData.json();
-      setLocationList(locationJSON.results);
-
-      setMenu(true);
+      if (locationJSON.results) {
+        setError(false);
+        setLocationList(locationJSON.results);
+        setMenu(true);
+      } else {
+        setError(true);
+      }
     }
   };
 
