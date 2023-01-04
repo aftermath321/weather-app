@@ -1,4 +1,5 @@
 import Weather from "../../types/weather";
+import { currentTime, currentHour } from "./currentTime";
 import weatherIcon from "./weatherIcons";
 
 const sevenDayWeather = (props: Weather | undefined): JSX.Element[] => {
@@ -7,8 +8,8 @@ const sevenDayWeather = (props: Weather | undefined): JSX.Element[] => {
     weatherTable.push(
       <li key={i} className="flex-col flex justify-center items-center">
         {weatherIcon(props?.daily.weathercode[i - 1])}
-        <p>Temperatue at 12:00:</p>
-        {props?.hourly.temperature_2m[i * 12]}°C
+        <p className="py-8">Temperatue at {currentTime()}</p>
+        {props?.hourly.temperature_2m[i * currentHour()]}°C
       </li>
     );
   }
