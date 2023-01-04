@@ -23,6 +23,7 @@
     "autoprefixer": "^10.4.13",
     "image-component": "^1.0.0",
     "postcss": "^8.4.19",
+    "react-icons": "^4.7.1",
     "tailwindcss": "^3.2.4"
   }
 }

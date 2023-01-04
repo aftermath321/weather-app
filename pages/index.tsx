@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import sevenDayWeather from "../src/compontents/sevenDayWeather";
 import Weather from "../types/weather";
 import Location from "../types/location";
+import { BsPeople } from "react-icons/bs";
+import { stringify } from "querystring";
+
+type Flag = {
+  country: string;
+  country_code: string;
+};
 
 export default function Home() {
   const [weather, setWeather] = useState<Weather>();
@@ -9,6 +16,7 @@ export default function Home() {
   const [locationList, setLocationList] = useState<Location[]>([]);
   const [menu, setMenu] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [flags, setFlags] = useState<string[]>([]);
 
   const getWeather = async (place: Location) => {
     let weatherData = await fetch(
@@ -23,7 +31,6 @@ export default function Home() {
       setMenu(false);
       setError(true);
     } else {
-      
       let locationData = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
       );
@@ -32,11 +39,40 @@ export default function Home() {
         setError(false);
         setLocationList(locationJSON.results);
         setMenu(true);
+
+//      Fetching all the flags with flag codes
+        addFlag(locationJSON.results);
+        fetchFlags();
+
       } else {
         setError(true);
       }
     }
   };
+
+  const addFlag = (locations: Location[]) => {
+    let flagArray: string[] = [];
+
+    for (let i = 0; i < locations.length; i++) {
+      flagArray.push(locations[i].country_code);
+    }
+
+    let uniqueFlags = new Set(flagArray);
+
+    if (uniqueFlags.size >= 1) {
+      setFlags([...uniqueFlags])
+    }
+  };
+
+  // Function used to fetch all the flags depending on the Flag state (all the country codes are fetched)
+  const fetchFlags = async () => {
+
+    for(let i = 0; i < flags.length; i++){
+      let flag = fetch(`https://countryflagsapi.com/png/${flags[i]}`);
+    }
+       
+  };
+
 
   const errorMessage = () => {
     if (error == true) {
@@ -49,22 +85,49 @@ export default function Home() {
   const dropMenu = () => {
     if (menu == true && locationList !== undefined) {
       return (
-        <ul>
-          {locationList.map((place, index) => {
-            return (
-              <li
-                key={index}
-                onClick={function () {
-                  getWeather(place);
-                  setMenu(false);
-                }}
-                className="cursor-pointer divide-x-2 divide-black"
-              >
-                {place.name} {place.population} {place.country}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="block w-[100%] h-[40%] relative">
+          <ul className="grid grid-rows divide-y-2 divide-black">
+            <li className="grid grid-cols-4 text-bold text-xl p-2  ">
+              <span className="col-span-1 flex justify-center items-center">
+                Name
+              </span>
+              <span className="col-span-1 flex justify-center items-center">
+                Population <BsPeople size={40} className="p-2" />
+              </span>
+              <span className="col-span-1 flex justify-center items-center">
+                Admin. unit
+              </span>
+              <span className="col-span-1 flex justify-center items-center">
+                Country
+              </span>
+            </li>
+            {locationList.map((place, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={function () {
+                    getWeather(place);
+                    setMenu(false);
+                  }}
+                  className="grid grid-cols-4 cursor-pointer p-2"
+                >
+                  <span className="col-span-1 flex justify-center items-center">
+                    {place.name}
+                  </span>
+                  <span className="col-span-1 flex justify-center items-center">
+                    {place.population}
+                  </span>
+                  <span className="col-span-1 flex justify-center items-center">
+                    {place.admin1}
+                  </span>
+                  <span className="col-span-1 flex justify-center items-center">
+                    {place.country}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       );
     }
   };
@@ -93,7 +156,7 @@ export default function Home() {
         <div
           className={
             menu
-              ? "border-black border-2 flex justify-center items-center w-[40vw]"
+              ? "border-black border-2 flex justify-center items-center w-[60vw]"
               : "hidden border-none"
           }
         >
