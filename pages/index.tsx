@@ -4,6 +4,8 @@ import Weather from "../types/weather";
 import Location from "../types/location";
 import { BsPeople } from "react-icons/bs";
 import { stringify } from "querystring";
+import dailyWeather from "../src/compontents/dailyWeather";
+import { RxCrossCircled } from "react-icons/rx";
 
 type Flag = {
   country: string;
@@ -15,6 +17,7 @@ export default function Home() {
   const [city, setCity] = useState<string>("");
   const [locationList, setLocationList] = useState<Location[]>([]);
   const [menu, setMenu] = useState<boolean>(false);
+  const [dailyWeatherMenu, setDailyWeatherMenu] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [flags, setFlags] = useState<string[]>([]);
 
@@ -25,7 +28,6 @@ export default function Home() {
     let weatherJSON = await weatherData.json();
     setWeather(weatherJSON);
   };
-
   const getLocation = async () => {
     if (locationList === undefined || city === "") {
       setMenu(false);
@@ -40,16 +42,14 @@ export default function Home() {
         setLocationList(locationJSON.results);
         setMenu(true);
 
-//      Fetching all the flags with flag codes
-        addFlag(locationJSON.results);
-        fetchFlags();
-
+        //      Fetching all the flags with flag codes
+        // addFlag(locationJSON.results);
+        // fetchFlags();
       } else {
         setError(true);
       }
     }
   };
-
   const addFlag = (locations: Location[]) => {
     let flagArray: string[] = [];
 
@@ -60,20 +60,15 @@ export default function Home() {
     let uniqueFlags = new Set(flagArray);
 
     if (uniqueFlags.size >= 1) {
-      setFlags([...uniqueFlags])
+      setFlags([...uniqueFlags]);
     }
   };
-
   // Function used to fetch all the flags depending on the Flag state (all the country codes are fetched)
   const fetchFlags = async () => {
-
-    for(let i = 0; i < flags.length; i++){
+    for (let i = 0; i < flags.length; i++) {
       let flag = fetch(`https://countryflagsapi.com/png/${flags[i]}`);
     }
-       
   };
-
-
   const errorMessage = () => {
     if (error == true) {
       return <p className=" text-2xl">Please enter a correct city name!</p>;
@@ -81,7 +76,6 @@ export default function Home() {
       return null;
     }
   };
-
   const dropMenu = () => {
     if (menu == true && locationList !== undefined) {
       return (
@@ -132,8 +126,30 @@ export default function Home() {
     }
   };
 
+  const handleDailyWeatherMenu = () => {
+    setDailyWeatherMenu((prevValue) => !prevValue);
+  };
+
+  const showDailyWeatherMenu = () => {
+    if (dailyWeatherMenu) {
+      return (
+        <div className="absolute bg-black/70 w-screen h-screen">
+          <RxCrossCircled
+            size={40}
+            className="text-white absolute z-1 hover:text-cyan-400 right-[30%] top-10"
+            onClick={() => setDailyWeatherMenu(false)}
+          />
+          <div className="w-[600px] h-[600px] absolute left-0 right-0 mx-auto top-20">
+            {dailyWeather(weather?.hourly.temperature_2m)}
+          </div>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="w-screen h-screen bg-white flex-col flex items-center">
+      <>{showDailyWeatherMenu()}</>
       <>{errorMessage()}</>
       <div className="py-8 ">
         <div className="flex w-full h-[10vh] justify-center items-center ">
@@ -195,7 +211,10 @@ export default function Home() {
             </li>
           </ul>
 
-          <ul className="h-full grid grid-cols-7 row-span-3 border-black border-2 divide-x-2 divide-black">
+          <ul
+            className="h-full grid grid-cols-7 row-span-3 border-black border-2 divide-x-2 divide-black"
+            onClick={handleDailyWeatherMenu}
+          >
             {sevenDayWeather(weather)}
           </ul>
         </div>

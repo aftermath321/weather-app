@@ -8,8 +8,9 @@ export const currentHour = () => {
 
 export const currentTime = () => {
   let today = new Date();
+
   let time =
-    today.getHours() + ":" + today.getMinutes()
+    today.getHours() + ":" + String(today.getMinutes()).padStart(2, "0");
     return time;
 }
 
