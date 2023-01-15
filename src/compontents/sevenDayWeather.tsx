@@ -1,20 +1,29 @@
 import Weather from "../../types/weather";
+import { useState } from "react";
 import { currentTime, currentHour } from "./currentTime";
 import weatherIcon from "./weatherIcons";
+import { RxCrossCircled } from "react-icons/rx";
 
-const sevenDayWeather = (props: Weather | undefined): JSX.Element[] => {
-  let weatherTable = [];
-  for (let i = 1; i <= 7; i++) {
-    weatherTable.push(
-      <li key={i} className="flex-col flex justify-center items-center">
-        {weatherIcon(props?.daily.weathercode[i - 1])}
-        <p className="py-8">Temperatue at {currentTime()}</p>
-        {props?.hourly.temperature_2m[i * currentHour()]}°C
-      </li>
-    );
-  }
-  return weatherTable;
+
+
+
+const SevenDayWeather = (
+  props: {fullWeather: Weather | undefined, day: number, menuDay: any},
+): JSX.Element => {
+
+  const [day, setDay] = useState(props.day)
+
+  return (
+    <li
+      key={props.day}
+      className="flex-col flex justify-center items-center"
+      onClick={() => props.menuDay(props.day)}
+    >
+      {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
+      <p className="py-8">Temperatue at {currentTime()}</p>
+      {props.fullWeather?.hourly?.temperature_2m[props.day * currentHour()]}°C
+    </li>
+  );
 };
 
-
-export default sevenDayWeather;
+export default SevenDayWeather;

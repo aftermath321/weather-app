@@ -1,5 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import Weather from "../../types/weather";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,7 +23,24 @@ ChartJS.register(
   Legend
 );
 
-const dailyWeather = (props: any): JSX.Element => {
+const DailyWeather = (props: {
+  weather: Weather | undefined;
+  day: number;
+}): JSX.Element => {
+  const correctDay = () => {
+    switch (props.day) {
+      case 0:
+        return 1;
+      case 1:
+        return 24;
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+    }
+  };
+
   const data = {
     labels: [
       "00:00",
@@ -53,30 +72,30 @@ const dailyWeather = (props: any): JSX.Element => {
       {
         label: "Temperature",
         data: [
-          props[0],
-          props[1],
-          props[2],
-          props[3],
-          props[4],
-          props[5],
-          props[6],
-          props[7],
-          props[8],
-          props[9],
-          props[10],
-          props[11],
-          props[12],
-          props[13],
-          props[14],
-          props[15],
-          props[16],
-          props[17],
-          props[18],
-          props[19],
-          props[20],
-          props[21],
-          props[22],
-          props[23],
+          props.weather?.hourly.temperature_2m[0 + props.day * 24],
+          props.weather?.hourly.temperature_2m[1 + props.day * 24],
+          props.weather?.hourly.temperature_2m[2 + props.day * 24],
+          props.weather?.hourly.temperature_2m[3 + props.day * 24],
+          props.weather?.hourly.temperature_2m[4 + props.day * 24],
+          props.weather?.hourly.temperature_2m[5 + props.day * 24],
+          props.weather?.hourly.temperature_2m[6 + props.day * 24],
+          props.weather?.hourly.temperature_2m[7 + props.day * 24],
+          props.weather?.hourly.temperature_2m[8 + props.day * 24],
+          props.weather?.hourly.temperature_2m[9 + props.day * 24],
+          props.weather?.hourly.temperature_2m[10 + props.day * 24],
+          props.weather?.hourly.temperature_2m[11 + props.day * 24],
+          props.weather?.hourly.temperature_2m[12 + props.day * 24],
+          props.weather?.hourly.temperature_2m[13 + props.day * 24],
+          props.weather?.hourly.temperature_2m[14 + props.day * 24],
+          props.weather?.hourly.temperature_2m[15 + props.day * 24],
+          props.weather?.hourly.temperature_2m[16 + props.day * 24],
+          props.weather?.hourly.temperature_2m[17 + props.day * 24],
+          props.weather?.hourly.temperature_2m[18 + props.day * 24],
+          props.weather?.hourly.temperature_2m[19 + props.day * 24],
+          props.weather?.hourly.temperature_2m[20 + props.day * 24],
+          props.weather?.hourly.temperature_2m[21 + props.day * 24],
+          props.weather?.hourly.temperature_2m[22 + props.day * 24],
+          props.weather?.hourly.temperature_2m[23 + props.day * 24],
         ],
       },
     ],
@@ -103,14 +122,15 @@ const dailyWeather = (props: any): JSX.Element => {
   };
 
   return (
-      <Line
-        data={data}
-        width={300}
-        height={300}
-        options={options}
-        className="flex bg-white items-center justify-center"
-      />
+    <Line
+      data={data}
+      width={300}
+      height={300}
+      options={options}
+      className="flex bg-white items-center justify-center"
+      onClick={() => console.log(props.day)}
+    />
   );
 };
 
-export default dailyWeather;
+export default DailyWeather;

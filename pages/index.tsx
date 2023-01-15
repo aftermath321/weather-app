@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
-import sevenDayWeather from "../src/compontents/sevenDayWeather";
+import { useState } from "react";
 import Weather from "../types/weather";
 import Location from "../types/location";
 import { BsPeople } from "react-icons/bs";
-import { stringify } from "querystring";
-import dailyWeather from "../src/compontents/dailyWeather";
+import DailyWeather from "../src/compontents/DailyWeather";
 import { RxCrossCircled } from "react-icons/rx";
+import SevenDayWeather from "../src/compontents/SevenDayWeather";
 
-type Flag = {
-  country: string;
-  country_code: string;
-};
+// type Flag = {
+//   country: string;
+//   country_code: string;
+// };
 
 export default function Home() {
   const [weather, setWeather] = useState<Weather>();
@@ -19,7 +18,8 @@ export default function Home() {
   const [menu, setMenu] = useState<boolean>(false);
   const [dailyWeatherMenu, setDailyWeatherMenu] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [flags, setFlags] = useState<string[]>([]);
+  // const [flags, setFlags] = useState<string[]>([]);
+  const [chosenDay, setChosenDay] = useState<number>(0);
 
   const getWeather = async (place: Location) => {
     let weatherData = await fetch(
@@ -50,25 +50,25 @@ export default function Home() {
       }
     }
   };
-  const addFlag = (locations: Location[]) => {
-    let flagArray: string[] = [];
+  // const addFlag = (locations: Location[]) => {
+  //   let flagArray: string[] = [];
 
-    for (let i = 0; i < locations.length; i++) {
-      flagArray.push(locations[i].country_code);
-    }
+  //   for (let i = 0; i < locations.length; i++) {
+  //     flagArray.push(locations[i].country_code);
+  //   }
 
-    let uniqueFlags = new Set(flagArray);
+  //   let uniqueFlags = new Set(flagArray);
 
-    if (uniqueFlags.size >= 1) {
-      setFlags([...uniqueFlags]);
-    }
-  };
+  //   if (uniqueFlags.size >= 1) {
+  //     setFlags([...uniqueFlags]);
+  //   }
+  // };
   // Function used to fetch all the flags depending on the Flag state (all the country codes are fetched)
-  const fetchFlags = async () => {
-    for (let i = 0; i < flags.length; i++) {
-      let flag = fetch(`https://countryflagsapi.com/png/${flags[i]}`);
-    }
-  };
+  // const fetchFlags = async () => {
+  //   for (let i = 0; i < flags.length; i++) {
+  //     let flag = fetch(`https://countryflagsapi.com/png/${flags[i]}`);
+  //   }
+  // };
   const errorMessage = () => {
     if (error == true) {
       return <p className=" text-2xl">Please enter a correct city name!</p>;
@@ -130,17 +130,21 @@ export default function Home() {
     setDailyWeatherMenu((prevValue) => !prevValue);
   };
 
+  const setDayMenu = (dayNumber: number) => {
+    setChosenDay(dayNumber);
+  };
+
   const showDailyWeatherMenu = () => {
     if (dailyWeatherMenu) {
       return (
         <div className="absolute bg-black/70 w-screen h-screen">
           <RxCrossCircled
             size={40}
-            className="text-white absolute z-1 hover:text-cyan-400 right-[30%] top-10"
-            onClick={() => setDailyWeatherMenu(false)}
+            className="text-white absolute z-1 hover:text-cyan-400 right-[20%] top-10"
+            onClick={handleDailyWeatherMenu}
           />
-          <div className="w-[600px] h-[600px] absolute left-0 right-0 mx-auto top-20">
-            {dailyWeather(weather?.hourly.temperature_2m)}
+          <div className="w-[600px] h-[600px] absolute z-10 left-0 right-0 mx-auto top-20">
+            <DailyWeather weather={weather} day={chosenDay} />
           </div>
         </div>
       );
@@ -210,12 +214,45 @@ export default function Home() {
               Day 7
             </li>
           </ul>
-
           <ul
             className="h-full grid grid-cols-7 row-span-3 border-black border-2 divide-x-2 divide-black"
             onClick={handleDailyWeatherMenu}
           >
-            {sevenDayWeather(weather)}
+            <SevenDayWeather
+              fullWeather={weather}
+              day={0}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={1}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={2}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={3}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={4}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={5}
+              menuDay={setDayMenu}
+            />
+            <SevenDayWeather
+              fullWeather={weather}
+              day={6}
+              menuDay={setDayMenu}
+            />
           </ul>
         </div>
       </div>
