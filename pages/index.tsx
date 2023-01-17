@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Weather from "../types/weather";
 import Location from "../types/location";
 import { BsPeople } from "react-icons/bs";
@@ -103,7 +103,7 @@ export default function Home() {
                     getWeather(place);
                     setMenu(false);
                   }}
-                  className="grid grid-cols-4 cursor-pointer p-2"
+                  className="grid grid-cols-4 cursor-pointer p-2 hover:bg-cyan-400/70"
                 >
                   <span className="col-span-1 flex justify-center items-center">
                     {place.name}
@@ -137,13 +137,13 @@ export default function Home() {
   const showDailyWeatherMenu = () => {
     if (dailyWeatherMenu) {
       return (
-        <div className="absolute bg-black/70 w-screen h-screen">
+        <div className="absolute bg-black/60 w-screen h-screen z-20">
           <RxCrossCircled
             size={40}
-            className="text-white absolute z-1 hover:text-cyan-400 right-[20%] top-10"
+            className="text-white absolute z-25 hover:text-cyan-400 right-[20%] top-10 cursor-pointer"
             onClick={handleDailyWeatherMenu}
           />
-          <div className="w-[600px] h-[600px] absolute z-10 left-0 right-0 mx-auto top-20">
+          <div className="w-[600px] h-[600px] absolute z-20 left-0 right-0 mx-auto top-20 border-black border-2">
             <DailyWeather weather={weather} day={chosenDay} />
           </div>
         </div>
@@ -152,20 +152,24 @@ export default function Home() {
   };
 
   return (
-    <div className="w-screen h-screen bg-white flex-col flex items-center">
+    <div className="w-screen h-screen flex-col flex items-center bg-cover ">
+      <video autoPlay muted loop className="w-[100%] min-h-[100%] inset-0 fixed bg-cover">
+        <source src="background.mp4" type="video/mp4" />
+      </video>
+   
       <>{showDailyWeatherMenu()}</>
       <>{errorMessage()}</>
-      <div className="py-8 ">
+      <div className="py-8 z-10">
         <div className="flex w-full h-[10vh] justify-center items-center ">
           <form onSubmit={(e) => e.preventDefault()} className="space-x-4">
             <input
               type="text"
               placeholder="Enter city name..."
               onChange={(e) => setCity(e.target.value)}
-              className="h-[40px] border-black border-2 rounded-lg px-2"
+              className="h-[40px] border-black border-2 rounded-lg px-2 focus:border-cyan-400"
             ></input>
             <button
-              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-black border-2 hover:bg-cyan-400 hover:duration-200 hover:shadow-cyan-300 hover:shadow-md"
+              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-black border-2 hover:bg-cyan-400 hover:duration-200  hover:shadow-md"
               onClick={getLocation}
             >
               Search
@@ -176,7 +180,7 @@ export default function Home() {
         <div
           className={
             menu
-              ? "border-black border-2 flex justify-center items-center w-[60vw]"
+              ? "border-black border-2 flex justify-center items-center w-[60vw] bg-white rounded-lg "
               : "hidden border-none"
           }
         >
@@ -190,7 +194,7 @@ export default function Home() {
             : "hidden border-none"
         }
       >
-        <div className="w-full h-full text-center grid grid-rows-4 ">
+        <div className="w-full h-full text-center grid grid-rows-4 z-10 bg-white">
           <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-black border-2 divide-x-2 divide-black">
             <li key={1} className="h-full flex justify-center items-center">
               Day 1
@@ -215,7 +219,7 @@ export default function Home() {
             </li>
           </ul>
           <ul
-            className="h-full grid grid-cols-7 row-span-3 border-black border-2 divide-x-2 divide-black"
+            className="h-full grid grid-cols-7 row-span-3 min-h-full min-w-full border-black border-2 divide-x-2 divide-black"
             onClick={handleDailyWeatherMenu}
           >
             <SevenDayWeather

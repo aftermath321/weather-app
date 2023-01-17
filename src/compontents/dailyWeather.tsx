@@ -27,19 +27,7 @@ const DailyWeather = (props: {
   weather: Weather | undefined;
   day: number;
 }): JSX.Element => {
-  const correctDay = () => {
-    switch (props.day) {
-      case 0:
-        return 1;
-      case 1:
-        return 24;
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-    }
-  };
+ 
 
   const data = {
     labels: [
@@ -70,7 +58,7 @@ const DailyWeather = (props: {
     ],
     datasets: [
       {
-        label: "Temperature",
+        label: "Temperature °C",
         data: [
           props.weather?.hourly.temperature_2m[0 + props.day * 24],
           props.weather?.hourly.temperature_2m[1 + props.day * 24],

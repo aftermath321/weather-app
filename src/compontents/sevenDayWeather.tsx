@@ -1,22 +1,15 @@
 import Weather from "../../types/weather";
-import { useState } from "react";
 import { currentTime, currentHour } from "./currentTime";
 import weatherIcon from "./weatherIcons";
-import { RxCrossCircled } from "react-icons/rx";
-
-
-
 
 const SevenDayWeather = (
   props: {fullWeather: Weather | undefined, day: number, menuDay: any},
 ): JSX.Element => {
 
-  const [day, setDay] = useState(props.day)
-
   return (
     <li
       key={props.day}
-      className="flex-col flex justify-center items-center"
+      className="flex-col flex justify-center items-center hover:bg-cyan-400/70 cursor-pointer"
       onClick={() => props.menuDay(props.day)}
     >
       {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
