@@ -116,7 +116,6 @@ const DailyWeather = (props: {
       height={300}
       options={options}
       className="flex bg-white items-center justify-center"
-      onClick={() => console.log(props.day)}
     />
   );
 };
