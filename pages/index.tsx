@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Weather from "../types/weather";
 import Location from "../types/location";
 import { BsPeople } from "react-icons/bs";
@@ -28,6 +28,7 @@ export default function Home() {
     let weatherJSON = await weatherData.json();
     setWeather(weatherJSON);
   };
+  
   const getLocation = async () => {
     if (locationList === undefined || city === "") {
       setMenu(false);
@@ -152,13 +153,14 @@ export default function Home() {
   };
 
   return (
-    <div className="w-screen h-screen flex-col flex items-center bg-cover ">
+    <div className="w-screen h-screen flex-col flex items-center">
       <video autoPlay muted loop className="w-[100%] min-h-[100%] inset-0 fixed bg-cover">
         <source src="background.mp4" type="video/mp4" />
       </video>
    
       <>{showDailyWeatherMenu()}</>
       <>{errorMessage()}</>
+
       <div className="py-8 z-10">
         <div className="flex w-full h-[10vh] justify-center items-center ">
           <form onSubmit={(e) => e.preventDefault()} className="space-x-4">
