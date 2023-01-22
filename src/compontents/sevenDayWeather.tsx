@@ -16,7 +16,7 @@ const SevenDayWeather = (
         {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
       </span>
       {/* <p className="py-8">{currentTime()}</p> */}
-      <p>
+      <p className="text-[0.8rem]">
         {props.fullWeather?.hourly?.temperature_2m[props.day * currentHour()]}°C
       </p>
     </li>
