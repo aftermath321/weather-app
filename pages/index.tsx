@@ -2,7 +2,7 @@ import { useState } from "react";
 import getLocation from "./api/getLocation";
 import Weather from "../types/weather";
 import Location from "../types/location";
-import SevenDayWeather from "../src/compontents/SevenDayWeather";
+import SevenDayWeather from "../src/compontents/sevenDayWeather";
 import DropMenu from "../src/compontents/DropMenu";
 import ShowDailyWeatherMenu from "../src/compontents/ShowDailyWeatherMenu";
 
