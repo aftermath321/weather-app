@@ -62,7 +62,6 @@ export default function Home() {
         muted
         loop
         className="w-[100%] h-[100%] inset-0 fixed bg-cover object-cover"
-        // className="lg:w-[100%] lg:min-h-[100%] inset-0 fixed bg-cover"
       >
         <source src="background.mp4" type="video/mp4" />
       </video>
