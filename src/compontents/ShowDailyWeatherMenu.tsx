@@ -1,7 +1,7 @@
 import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import Weather from "../../types/weather";
-import DailyWeather from "./DailyWeather";
+import DailyWeather from "./dailyWeather";
 
 const ShowDailyWeatherMenu = (props: {
   menuFunction: Function;
