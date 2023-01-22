@@ -61,7 +61,8 @@ export default function Home() {
         autoPlay
         muted
         loop
-        className="w-[100%] min-h-[100%] inset-0 fixed bg-cover"
+        className="w-[100%] h-[100%] inset-0 fixed bg-cover object-cover"
+        // className="lg:w-[100%] lg:min-h-[100%] inset-0 fixed bg-cover"
       >
         <source src="background.mp4" type="video/mp4" />
       </video>
@@ -80,8 +81,15 @@ export default function Home() {
             ></input>
             <button
               className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-black border-2 hover:bg-cyan-400 hover:duration-200  hover:shadow-md"
-              onClick={() => 
-                getLocation(locationList, city, setMenu, setError, setLocationList)}
+              onClick={() =>
+                getLocation(
+                  locationList,
+                  city,
+                  setMenu,
+                  setError,
+                  setLocationList
+                )
+              }
             >
               Search
             </button>
@@ -91,7 +99,7 @@ export default function Home() {
         <div
           className={
             menu
-              ? "border-black border-2 flex justify-center items-center w-[60vw] bg-white rounded-lg "
+              ? "border-black border-2 flex justify-center items-center mx-2 text-[0.8rem] bg-white rounded-lg "
               : "hidden border-none"
           }
         >
@@ -101,11 +109,11 @@ export default function Home() {
       <div
         className={
           weather
-            ? "w-[80vw] h-[40vh] border-black border-2 rounded-lg flex justify-center items-center"
+            ? "w-[100vw] h-[40vh] rounded-lg flex justify-center items-center"
             : "hidden border-none"
         }
       >
-        <div className="w-full h-full text-center grid grid-rows-4 z-10 bg-white">
+        <div className="text-center grid grid-rows-4 z-10 bg-white my-4 md:w-[60vw] mx-4">
           <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-black border-2 divide-x-2 divide-black">
             <li key={1} className="h-full flex justify-center items-center">
               Day 1

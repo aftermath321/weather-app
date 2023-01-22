@@ -9,12 +9,16 @@ const SevenDayWeather = (
   return (
     <li
       key={props.day}
-      className="flex-col flex justify-center items-center hover:bg-cyan-400/70 cursor-pointer"
+      className="flex-col flex justify-center items-center hover:bg-cyan-400/70 cursor-pointer "
       onClick={() => props.menuDay(props.day)}
     >
-      {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
-      <p className="py-8">Temperatue at {currentTime()}</p>
-      {props.fullWeather?.hourly?.temperature_2m[props.day * currentHour()]}°C
+      <span className="py-6">
+        {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
+      </span>
+      {/* <p className="py-8">{currentTime()}</p> */}
+      <p>
+        {props.fullWeather?.hourly?.temperature_2m[props.day * currentHour()]}°C
+      </p>
     </li>
   );
 };

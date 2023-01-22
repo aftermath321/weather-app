@@ -4,14 +4,14 @@ import Location from '../../types/location';
 
 const DropMenu = (props:  {locations: Location[], menuFunction: Function, weatherFunction: Function}): JSX.Element => {
     return (
-      <div className="block w-[100%] h-[40%] relative">
-        <ul className="grid grid-rows divide-y-2 divide-black">
-          <li className="grid grid-cols-4 text-bold text-xl p-2  ">
-            <span className="col-span-1 flex justify-center items-center">
+      <div className="block h-[60%] relative">
+        <ul className="grid grid-rows divide-y-2 divide-black text-[0.8rem] md:w-[60vw]">
+          <li className="grid grid-cols-4 text-bold text-xl p-2 text-[1rem] text-bold">
+            <span className="col-span-1 flex justify-center items-center ">
               Name
             </span>
             <span className="col-span-1 flex justify-center items-center">
-              Population <BsPeople size={40} className="p-2" />
+              Population <BsPeople size={30} className="p-1" />
             </span>
             <span className="col-span-1 flex justify-center items-center">
               Admin. unit
