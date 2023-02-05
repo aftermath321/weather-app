@@ -5,7 +5,7 @@ import Location from '../../types/location';
 const DropMenu = (props:  {locations: Location[], menuFunction: Function, weatherFunction: Function}): JSX.Element => {
     return (
       <div className="block h-[60%] relative">
-        <ul className="grid grid-rows divide-y-2 divide-black text-[0.8rem] md:w-[60vw]">
+        <ul className="grid grid-rows divide-y-2 divide-[#131313] text-[0.8rem] md:w-[60vw]">
           <li className="grid grid-cols-4 text-bold text-xl p-2 text-[1rem] text-bold">
             <span className="col-span-1 flex justify-center items-center ">
               Name

@@ -76,10 +76,10 @@ export default function Home() {
               type="text"
               placeholder="Enter city name..."
               onChange={(e) => setCity(e.target.value)}
-              className="h-[40px] border-black border-2 rounded-lg px-2 focus:border-cyan-400"
+              className="h-[40px] border-[#131313] border-2 rounded-lg px-2 focus:border-cyan-400"
             ></input>
             <button
-              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-black border-2 hover:bg-cyan-400 hover:duration-200  hover:shadow-md"
+              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-[#131313] border-2 hover:bg-cyan-400 hover:duration-200  hover:shadow-md"
               onClick={() =>
                 getLocation(
                   locationList,
@@ -98,7 +98,7 @@ export default function Home() {
         <div
           className={
             menu
-              ? "border-black border-2 flex justify-center items-center mx-2 text-[0.8rem] bg-white rounded-lg "
+              ? "border-[#131313] border-2 flex justify-center items-center mx-2 text-[0.8rem] bg-white rounded-lg "
               : "hidden border-none"
           }
         >
@@ -113,7 +113,7 @@ export default function Home() {
         }
       >
         <div className="text-center grid grid-rows-4 z-10 bg-white my-4 md:w-[60vw] mx-4">
-          <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-black border-2 divide-x-2 divide-black">
+          <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-[#131313] border-2 divide-x-2 divide-[#131313]">
             <li key={1} className="h-full flex justify-center items-center">
               Day 1
             </li>
@@ -137,7 +137,7 @@ export default function Home() {
             </li>
           </ul>
           <ul
-            className="h-full grid grid-cols-7 row-span-3 min-h-full min-w-full border-black border-2 divide-x-2 divide-black"
+            className="h-full grid grid-cols-7 row-span-3 min-h-full min-w-full border-[#131313] border-2 divide-x-2 divide-[#131313]"
             onClick={handleDailyWeatherMenu}
           >
             <SevenDayWeather

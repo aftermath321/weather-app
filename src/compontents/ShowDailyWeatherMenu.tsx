@@ -1,7 +1,7 @@
 import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import Weather from "../../types/weather";
-import DailyWeather from "./dailyWeather";
+import DailyWeather from "./DailyWeather";
 
 const ShowDailyWeatherMenu = (props: {
   menuFunction: Function;
@@ -9,7 +9,7 @@ const ShowDailyWeatherMenu = (props: {
   day: number;
 }): JSX.Element => {
   return (
-    <div className="absolute bg-black/80 w-[100vw] h-[100vh] z-20">
+    <div className="absolute bg-[#131313]/80 w-[100vw] h-[100vh] z-20">
       <RxCrossCircled
         size={40}
         className="text-white absolute z-25 hover:text-cyan-400 right-[20%] top-10 cursor-pointer"
