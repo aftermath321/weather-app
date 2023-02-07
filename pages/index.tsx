@@ -80,7 +80,7 @@ export default function Home() {
               type="text"
               placeholder="Enter city name..."
               onChange={(e) => setCity(e.target.value)}
-              className="w-[250px] h-[50px] border-[#13131336] shadow-md border-solid border-2 rounded-xl px-2 focus:bg-[#fafafa] focus:outline-[#00eeff]"
+              className="w-[250px] h-[50px] border-[#13131336] outline-none shadow-md border-solid border-2 rounded-xl px-2 focus:bg-[#fafafa] focus:outline-[#00eeff]"
             ></input>
             <button
               className="w-[100px] h-[50px] mx-4 my-4 
