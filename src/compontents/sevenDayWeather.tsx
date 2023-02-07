@@ -9,7 +9,7 @@ const SevenDayWeather = (
   return (
     <li
       key={props.day}
-      className="flex-col flex justify-center items-center hover:bg-cyan-400/70 cursor-pointer "
+      className="flex-col flex justify-center items-center cursor-pointer  hover:scale-[110%] duration-500 bg-[#ffffff] hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff]"
       onClick={() => props.menuDay(props.day)}
     >
       <span className="py-6">

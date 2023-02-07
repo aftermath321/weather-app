@@ -17,7 +17,11 @@ export default function Home() {
 
   const errorMessage = () => {
     if (error == true) {
-      return <p className="absolute z-50 text-2xl  text-red-400 text-bold">Please enter a correct city name!</p>;
+      return (
+        <p className="z-50 text-2xl animate-pulse text-[#d33333] text-bold">
+          Please enter a correct city name!
+        </p>
+      );
     } else {
       return null;
     }
@@ -67,19 +71,23 @@ export default function Home() {
       </video>
 
       <>{showDailyWeatherMenu()}</>
-      <>{errorMessage()}</>
 
       <div className="py-8 z-10">
-        <div className="flex w-full h-[10vh] justify-center items-center ">
-          <form onSubmit={(e) => e.preventDefault()} className="space-x-4">
+        <div className="flex-col left-0 right-0 mx-auto justify-center items-center flex">
+          <>{errorMessage()}</>
+          <form onSubmit={(e) => e.preventDefault()}>
             <input
               type="text"
               placeholder="Enter city name..."
               onChange={(e) => setCity(e.target.value)}
-              className="h-[40px] border-[#131313] border-2 rounded-lg px-2 focus:border-cyan-400"
+              className="w-[250px] h-[50px] border-[#13131336] shadow-md border-solid border-2 rounded-xl px-2 focus:bg-[#fafafa] focus:outline-[#00eeff]"
             ></input>
             <button
-              className="w-[80px] h-[40px] bg-white rounded-lg p-2 border-[#131313] border-2 hover:bg-cyan-400 hover:duration-200  hover:shadow-md"
+              className="w-[100px] h-[50px] mx-4 my-4 
+              bg-gradient-to-tr from-[#00eeff] to-[#008cff] 
+              active:translate-y-1 active:shadow-lg active:duration-100
+              rounded-xl p-2 border-[#131313] border-1 shadow-xl 
+              "
               onClick={() =>
                 getLocation(
                   locationList,
@@ -98,7 +106,7 @@ export default function Home() {
         <div
           className={
             menu
-              ? "border-[#131313] border-2 flex justify-center items-center mx-2 text-[0.8rem] bg-white rounded-lg "
+              ? "border-[#131313] shadow-md flex justify-center items-center mx-2 text-[0.8rem] bg-[#ffffff] rounded-lg "
               : "hidden border-none"
           }
         >
@@ -112,9 +120,9 @@ export default function Home() {
             : "hidden border-none"
         }
       >
-        <div className="text-center grid grid-rows-4 z-10 bg-white my-4 md:w-[60vw] mx-4">
-          <ul className="h-full justify-center items-center grid grid-cols-7 row-span-1 border-[#131313] border-2 divide-x-2 divide-[#131313]">
-            <li key={1} className="h-full flex justify-center items-center">
+        <div className="text-center grid grid-rows-4 z-10 my-4 md:w-[60vw]  mx-4 ">
+          <ul className="h-full justify-center items-center grid grid-cols-7  row-span-1 border-[#131313] border-2  divide-[#131313]  rounded-t-lg bg-gradient-to-t from-[#00eeff] to-[#008cff]">
+            <li key={1} className="h-full flex justify-center items-center ">
               Day 1
             </li>
             <li key={2} className="h-full flex justify-center items-center">
@@ -137,7 +145,7 @@ export default function Home() {
             </li>
           </ul>
           <ul
-            className="h-full grid grid-cols-7 row-span-3 min-h-full min-w-full border-[#131313] border-2 divide-x-2 divide-[#131313]"
+            className="h-full rounded-lg grid grid-cols-7 border-t-0 shadow-lg row-span-3 min-h-full min-w-full border-[#131313] border-2 divide-[#131313]"
             onClick={handleDailyWeatherMenu}
           >
             <SevenDayWeather
