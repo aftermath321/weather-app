@@ -115,7 +115,7 @@ const DailyWeather = (props: {
       width={300}
       height={300}
       options={options}
-      className="flex bg-white items-center justify-center"
+      className=" bg-white items-center justify-center"
     />
   );
 };

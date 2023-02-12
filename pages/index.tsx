@@ -72,7 +72,7 @@ export default function Home() {
         <source src="background.mp4" type="video/mp4" />
       </video> */}
       
-
+    <>{showDailyWeatherMenu()}</>
         {/* Main hud */}
       <div className="flex flex-col z-10  h-[100%] sm:w-[90vw] md:w-[80vw] lg:w-[70vw] padding-4 ">
         <Image
@@ -82,7 +82,7 @@ export default function Home() {
           height={150}
           id="logo"
         />
-        <>{showDailyWeatherMenu()}</>
+        
 
         <div className="py-2 md:py-8 z-10 m-2 md:m-4">
           <div className="flex-col left-0 right-0 mx-auto justify-center items-center flex">
@@ -126,7 +126,7 @@ export default function Home() {
           >
             {dropMenu()}
           </div>
-        </div>
+        
 
         <div
           className={
@@ -254,6 +254,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
