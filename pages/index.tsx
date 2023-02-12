@@ -71,18 +71,11 @@ export default function Home() {
       >
         <source src="background.mp4" type="video/mp4" />
       </video> */}
-      
-    <>{showDailyWeatherMenu()}</>
-        {/* Main hud */}
+
+      <>{showDailyWeatherMenu()}</>
+      {/* Main hud */}
       <div className="flex flex-col z-10  h-[100%] sm:w-[90vw] md:w-[80vw] lg:w-[70vw] padding-4 ">
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={150}
-          height={150}
-          id="logo"
-        />
-        
+        <Image src="/logo.png" alt="logo" width={150} height={150} id="logo" />
 
         <div className="py-2 md:py-8 z-10 m-2 md:m-4">
           <div className="flex-col left-0 right-0 mx-auto justify-center items-center flex">
@@ -126,135 +119,118 @@ export default function Home() {
           >
             {dropMenu()}
           </div>
-        
 
-        <div
-          className={
-            weather
-              ? "w-[100%] rounded-lg flex justify-center items-center  my-4"
-              : "hidden border-none"
-          }
-        >
-          <div className="text-center z-10">
-            <ul
-              className="justify-center items-center rounded-t-lg grid md:grid-cols-4 grid-cols-2 lg:grid-cols-7 gap-4"
-            >
-              <li
-                key={1}
-                className="width-[150px] grid grid-rows-4 hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="row-span-1 h-full">
-                  Day 1
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={0}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={2}
-                className="width-[150px] grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className=" h-full row-span-1">
-                  Day 2
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={1}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={3}
-                className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="h-full row-span-1">
-                  Day 3
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={2}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={4}
-                className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="h-full row-span-1">
-                  Day 4
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={3}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={5}
-                className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="h-full row-span-1">
-                  Day 5
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={4}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={6}
-                className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="h-full row-span-1">
-                  Day 6
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={5}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-              <li
-                key={7}
-                className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
-                onClick={handleDailyWeatherMenu}
-              >
-                <div className="h-full row-span-1">
-                  Day 7
-                </div>
-                <div className="row-span-3">
-                  <SevenDayWeather
-                    fullWeather={weather}
-                    day={6}
-                    menuDay={setDayMenu}
-                  />
-                </div>
-              </li>
-            </ul>
+          <div
+            className={
+              weather
+                ? "w-[100%] rounded-lg flex justify-center items-center  my-4"
+                : "hidden border-none"
+            }
+          >
+            <div className="text-center z-10">
+              <ul className="justify-center items-center rounded-t-lg grid md:grid-cols-4 grid-cols-2 lg:grid-cols-7 gap-4">
+                <li
+                  key={1}
+                  className="width-[150px] grid grid-rows-4 hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="row-span-1 h-full">Day 1</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={0}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={2}
+                  className="width-[150px] grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className=" h-full row-span-1">Day 2</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={1}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={3}
+                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="h-full row-span-1">Day 3</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={2}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={4}
+                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="h-full row-span-1">Day 4</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={3}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={5}
+                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="h-full row-span-1">Day 5</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={4}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={6}
+                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="h-full row-span-1">Day 6</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={5}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+                <li
+                  key={7}
+                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  onClick={handleDailyWeatherMenu}
+                >
+                  <div className="h-full row-span-1">Day 7</div>
+                  <div className="row-span-3">
+                    <SevenDayWeather
+                      fullWeather={weather}
+                      day={6}
+                      menuDay={setDayMenu}
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
