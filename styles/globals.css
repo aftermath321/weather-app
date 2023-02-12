@@ -2,14 +2,61 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+
 
 @layer base {
   html {
-    font-family: 'Open Sans', sans-serif;
     -webkit-smoothing: antialiased;
   }
   body{
+    font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
+    background: linear-gradient(to bottom, #2A2A72, #009FFD);
+    background-attachment: fixed; 
   }
+
+  #weather {
+    font:[Lobster];
+    text-shadow:
+   -1px -1px 0 #000000b7,  
+    1px -1px 0 #000000b7,
+    -1px 1px 0 #000000b7,
+     1px 1px 0 #000000b7;
+}
+  #app {
+  text-shadow:
+   -1px -1px 0 #000000b7,  
+    1px -1px 0 #000000b7,
+    -1px 1px 0 #000000b7,
+     1px 1px 0 #000000b7;
+}
+#logo{
+  z-index: 20;
+}
+
+@media (max-width: 640px) { 
+  #logo{
+    position: relative;
+    margin: 16px auto;
+    left: 0;
+    right: 0;
+  }
+ }
+@media (min-width: 768px) { 
+  #logo{
+    position: absolute;
+    margin: 32px auto;
+    left: 10px;
+  } }
+@media (min-width: 1024px) { 
+  #logo{
+    position: absolute;
+    margin: 32px auto;
+    left: 50px;
+  } }
 }
