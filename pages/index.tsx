@@ -220,7 +220,7 @@ export default function Home() {
                 </li>
                 <li
                   key={7}
-                  className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
+                  className="grid grid-rows-4 col-span-2 md:col-span-1 hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
                   <div className="h-full row-span-1">{dayOfTheWeek(6)}</div>
