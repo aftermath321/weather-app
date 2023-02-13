@@ -14,6 +14,8 @@ type Weather = {
   hourly: {
     time: string[];
     temperature_2m: number[];
+    windspeed_10m: number[];
+    pressure_msl: number[];
     relativehumidity_2m: number[];
   };
   daily_units: { time: string; weathercode: number };

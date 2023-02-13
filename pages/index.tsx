@@ -7,6 +7,7 @@ import DropMenu from "../src/compontents/DropMenu";
 import ShowDailyWeatherMenu from "../src/compontents/ShowDailyWeatherMenu";
 // import Logo from "../../public/logo.png";
 import Image from "next/image";
+import { dayOfTheWeek } from "../src/compontents/currentTime";
 
 export default function Home() {
   const [weather, setWeather] = useState<Weather>();
@@ -77,7 +78,7 @@ export default function Home() {
       <div className="flex flex-col z-10  h-[100%] sm:w-[90vw] md:w-[80vw] lg:w-[70vw] padding-4 ">
         <Image src="/logo.png" alt="logo" width={150} height={150} id="logo" />
 
-        <div className="py-2 md:py-8 z-10 m-2 md:m-4">
+        <div className="py-2 md:py-8 z-10 my-4 mx-2 md:mx-4">
           <div className="flex-col left-0 right-0 mx-auto justify-center items-center flex">
             <>{errorMessage()}</>
 
@@ -123,7 +124,7 @@ export default function Home() {
           <div
             className={
               weather
-                ? "w-[100%] rounded-lg flex justify-center items-center  my-4"
+                ? "w-[100%] rounded-lg flex justify-center items-center my-8"
                 : "hidden border-none"
             }
           >
@@ -134,7 +135,9 @@ export default function Home() {
                   className="width-[150px] grid grid-rows-4 hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="row-span-1 h-full">Day 1</div>
+                  <div className="row-span-1 h-full">
+                  
+                  {dayOfTheWeek(0)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -148,7 +151,9 @@ export default function Home() {
                   className="width-[150px] grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className=" h-full row-span-1">Day 2</div>
+                  <div className=" h-full row-span-1">
+                   {dayOfTheWeek(1)}
+                  </div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -162,7 +167,7 @@ export default function Home() {
                   className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="h-full row-span-1">Day 3</div>
+                  <div className="h-full row-span-1">{dayOfTheWeek(2)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -176,7 +181,7 @@ export default function Home() {
                   className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="h-full row-span-1">Day 4</div>
+                  <div className="h-full row-span-1">{dayOfTheWeek(3)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -190,7 +195,7 @@ export default function Home() {
                   className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="h-full row-span-1">Day 5</div>
+                  <div className="h-full row-span-1">{dayOfTheWeek(4)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -204,7 +209,7 @@ export default function Home() {
                   className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="h-full row-span-1">Day 6</div>
+                  <div className="h-full row-span-1">{dayOfTheWeek(5)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
@@ -218,7 +223,7 @@ export default function Home() {
                   className="grid grid-rows-4  hover:scale-[110%] duration-500  hover:bg-gradient-to-t hover:from-[#00eeff] hover:to-[#008cff] text-[#fff] shadow-xl"
                   onClick={handleDailyWeatherMenu}
                 >
-                  <div className="h-full row-span-1">Day 7</div>
+                  <div className="h-full row-span-1">{dayOfTheWeek(6)}</div>
                   <div className="row-span-3">
                     <SevenDayWeather
                       fullWeather={weather}
