@@ -17,6 +17,7 @@ type Weather = {
     windspeed_10m: number[];
     pressure_msl: number[];
     relativehumidity_2m: number[];
+    rain: number[];
   };
   daily_units: { time: string; weathercode: number };
   daily: { time: string[]; weathercode: number[] };

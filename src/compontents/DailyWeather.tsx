@@ -1,5 +1,5 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import Weather from "../../types/weather";
 
 import {
@@ -11,6 +11,8 @@ import {
   Title,
   Tooltip,
   Legend,
+  BarElement,
+  BarController,
 } from "chart.js";
 
 ChartJS.register(
@@ -18,17 +20,17 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  BarController
 );
 
 const DailyWeather = (props: {
   weather: Weather | undefined;
   day: number;
 }): JSX.Element => {
- 
-
   const data = {
     labels: [
       "00:00",
@@ -58,7 +60,7 @@ const DailyWeather = (props: {
     ],
     datasets: [
       {
-        label: "Temperature °C",
+        label: "Temperature [°C]",
         data: [
           props.weather?.hourly.temperature_2m[0 + props.day * 24],
           props.weather?.hourly.temperature_2m[1 + props.day * 24],
@@ -85,6 +87,45 @@ const DailyWeather = (props: {
           props.weather?.hourly.temperature_2m[22 + props.day * 24],
           props.weather?.hourly.temperature_2m[23 + props.day * 24],
         ],
+        yAxisID: "y",
+      },
+      {
+        label: "Rain [mm]",
+        data: [
+          props.weather?.hourly.rain[0 + props.day * 24],
+          props.weather?.hourly.rain[1 + props.day * 24],
+          props.weather?.hourly.rain[2 + props.day * 24],
+          props.weather?.hourly.rain[3 + props.day * 24],
+          props.weather?.hourly.rain[4 + props.day * 24],
+          props.weather?.hourly.rain[5 + props.day * 24],
+          props.weather?.hourly.rain[6 + props.day * 24],
+          props.weather?.hourly.rain[7 + props.day * 24],
+          props.weather?.hourly.rain[8 + props.day * 24],
+          props.weather?.hourly.rain[9 + props.day * 24],
+          props.weather?.hourly.rain[10 + props.day * 24],
+          props.weather?.hourly.rain[11 + props.day * 24],
+          props.weather?.hourly.rain[12 + props.day * 24],
+          props.weather?.hourly.rain[13 + props.day * 24],
+          props.weather?.hourly.rain[14 + props.day * 24],
+          props.weather?.hourly.rain[15 + props.day * 24],
+          props.weather?.hourly.rain[16 + props.day * 24],
+          props.weather?.hourly.rain[17 + props.day * 24],
+          props.weather?.hourly.rain[18 + props.day * 24],
+          props.weather?.hourly.rain[19 + props.day * 24],
+          props.weather?.hourly.rain[20 + props.day * 24],
+          props.weather?.hourly.rain[21 + props.day * 24],
+          props.weather?.hourly.rain[22 + props.day * 24],
+          props.weather?.hourly.rain[23 + props.day * 24],
+        ],
+        borderColor: `rgba(0, 140, 255, 1)`,
+        pointBorderColor: "rgba(0, 140, 255,1)",
+        backgroundColor: "rgba(0, 140, 255,0.4)",
+        pointHoverBackgroundColor: "rgba(0, 140, 255,1)",
+        pointHoverBorderColor: "rgba(20, 140, 255,1)",
+        pointBackgroundColor: "rgba(20, 140, 255,1)",
+        borderCapStyle: "rgba(20, 140, 255,1)",
+        type: "bar",
+        yAxisID: "y1",
       },
     ],
   };
@@ -92,24 +133,49 @@ const DailyWeather = (props: {
   const options = {
     fill: false,
     lineTension: 0.1,
-    backgroundColor: "rgba(75,192,192,0.4)",
-    borderColor: "rgba(75,192,192,1)",
-    borderCapStyle: "butt",
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: "miter",
-    pointBorderColor: "rgba(75,192,192,1)",
-    pointBackgroundColor: "#fff",
     pointBorderWidth: 1,
     pointHoverRadius: 5,
+    pointHoverBorderWidth: 2,
+    pointRadius: 2,
+    pointHitRadius: 10,
+
+    backgroundColor: "rgba(75,192,192,0.4)",
+    borderColor: "rgba(75,192,192,1)",
     pointHoverBackgroundColor: "rgba(75,192,192,1)",
     pointHoverBorderColor: "rgba(220,220,220,1)",
-    pointHoverBorderWidth: 2,
-    pointRadius: 1,
-    pointHitRadius: 10,
+    pointBorderColor: "rgba(75,192,192,1)",
+    pointBackgroundColor: "rgba(75,192,192,1)",
+    borderCapStyle: "rgba(75,192,192,1)",
+    scales: {
+      y: {
+        title:{
+          text: "Temperature",
+          display: true
+        },
+        type: "linear",
+        display: true,
+        position: "left",
+      },
+      y1: {
+        title:{
+          text: "Rain",
+          display: true
+        },
+        type: "linear",
+        display: true,
+        position: "right",
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
   };
 
   return (
+    // Shows error but works fine, might be library issue. Caused by providing Dataset different options and custom scales in config.
     <Line
       data={data}
       width={300}

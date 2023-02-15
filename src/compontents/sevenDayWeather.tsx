@@ -2,10 +2,11 @@ import Weather from "../../types/weather";
 import { currentTime, currentHour } from "./currentTime";
 import weatherIcon from "./weatherIcons";
 
-const SevenDayWeather = (
-  props: {fullWeather: Weather | undefined, day: number, menuDay: any},
-): JSX.Element => {
-
+const SevenDayWeather = (props: {
+  fullWeather: Weather | undefined;
+  day: number;
+  menuDay: any;
+}): JSX.Element => {
   return (
     <span
       key={props.day}
@@ -16,14 +17,14 @@ const SevenDayWeather = (
         {weatherIcon(props.fullWeather?.daily?.weathercode[props.day])}
       </span>
       <p>
-        <span className="font-bold">
+        <span className="font-bold text-xl">
           {props.fullWeather?.hourly?.temperature_2m[props.day * currentHour()]}
           °C
         </span>
         <br />
         {
           props.fullWeather?.hourly?.windspeed_10m[props.day * currentHour()]
-        }
+        }{" "}
         km/h
         <br />
         {props.fullWeather?.hourly?.pressure_msl[props.day * currentHour()]} hPa

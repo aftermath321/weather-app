@@ -15,7 +15,7 @@ const ShowDailyWeatherMenu = (props: {
         className="text-[#ffffff] absolute z-25 hover:text-cyan-400 mx-8 right-0 my-4 cursor-pointer"
         onClick={() => props.menuFunction(false)}
       />
-      <div className="sm:w-[90vw] sm:h-[90vh] md:w-full md:h-full lg:w-[40vw] lg:h-[70vh] relative z-50 left-0 right-0 mx-auto top-20 px-4">
+      <div className="sm:w-[90vw] sm:h-[90vh] md:w-[90vw] md:h-[90vh] lg:w-[40vw] lg:h-[80vh] relative z-50 left-0 right-0 mx-auto top-20 px-4">
         <DailyWeather weather={props.weather} day={props.day} />
       </div>
     </div>
