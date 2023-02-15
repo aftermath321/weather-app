@@ -89,46 +89,44 @@ const DailyWeather = (props: {
         ],
         yAxisID: "y",
       },
-      {
-        label: "Rain [mm]",
-        data: [
-          props.weather?.hourly.rain[0 + props.day * 24],
-          props.weather?.hourly.rain[1 + props.day * 24],
-          props.weather?.hourly.rain[2 + props.day * 24],
-          props.weather?.hourly.rain[3 + props.day * 24],
-          props.weather?.hourly.rain[4 + props.day * 24],
-          props.weather?.hourly.rain[5 + props.day * 24],
-          props.weather?.hourly.rain[6 + props.day * 24],
-          props.weather?.hourly.rain[7 + props.day * 24],
-          props.weather?.hourly.rain[8 + props.day * 24],
-          props.weather?.hourly.rain[9 + props.day * 24],
-          props.weather?.hourly.rain[10 + props.day * 24],
-          props.weather?.hourly.rain[11 + props.day * 24],
-          props.weather?.hourly.rain[12 + props.day * 24],
-          props.weather?.hourly.rain[13 + props.day * 24],
-          props.weather?.hourly.rain[14 + props.day * 24],
-          props.weather?.hourly.rain[15 + props.day * 24],
-          props.weather?.hourly.rain[16 + props.day * 24],
-          props.weather?.hourly.rain[17 + props.day * 24],
-          props.weather?.hourly.rain[18 + props.day * 24],
-          props.weather?.hourly.rain[19 + props.day * 24],
-          props.weather?.hourly.rain[20 + props.day * 24],
-          props.weather?.hourly.rain[21 + props.day * 24],
-          props.weather?.hourly.rain[22 + props.day * 24],
-          props.weather?.hourly.rain[23 + props.day * 24],
-        ],
-        options: {
-          borderColor: `rgba(0, 140, 255, 1)`,
-          pointBorderColor: "rgba(0, 140, 255,1)",
-          backgroundColor: "rgba(0, 140, 255,0.4)",
-          pointHoverBackgroundColor: "rgba(0, 140, 255,1)",
-          pointHoverBorderColor: "rgba(20, 140, 255,1)",
-          pointBackgroundColor: "rgba(20, 140, 255,1)",
-          borderCapStyle: "rgba(20, 140, 255,1)",
-          type: "bar",
-          yAxisID: "y1",
-        },
-      },
+      // {
+      //   label: "Rain [mm]",
+      //   data: [
+      //     props.weather?.hourly.rain[0 + props.day * 24],
+      //     props.weather?.hourly.rain[1 + props.day * 24],
+      //     props.weather?.hourly.rain[2 + props.day * 24],
+      //     props.weather?.hourly.rain[3 + props.day * 24],
+      //     props.weather?.hourly.rain[4 + props.day * 24],
+      //     props.weather?.hourly.rain[5 + props.day * 24],
+      //     props.weather?.hourly.rain[6 + props.day * 24],
+      //     props.weather?.hourly.rain[7 + props.day * 24],
+      //     props.weather?.hourly.rain[8 + props.day * 24],
+      //     props.weather?.hourly.rain[9 + props.day * 24],
+      //     props.weather?.hourly.rain[10 + props.day * 24],
+      //     props.weather?.hourly.rain[11 + props.day * 24],
+      //     props.weather?.hourly.rain[12 + props.day * 24],
+      //     props.weather?.hourly.rain[13 + props.day * 24],
+      //     props.weather?.hourly.rain[14 + props.day * 24],
+      //     props.weather?.hourly.rain[15 + props.day * 24],
+      //     props.weather?.hourly.rain[16 + props.day * 24],
+      //     props.weather?.hourly.rain[17 + props.day * 24],
+      //     props.weather?.hourly.rain[18 + props.day * 24],
+      //     props.weather?.hourly.rain[19 + props.day * 24],
+      //     props.weather?.hourly.rain[20 + props.day * 24],
+      //     props.weather?.hourly.rain[21 + props.day * 24],
+      //     props.weather?.hourly.rain[22 + props.day * 24],
+      //     props.weather?.hourly.rain[23 + props.day * 24],
+      //   ],
+      //   borderColor: `rgba(0, 140, 255, 1)`,
+      //   pointBorderColor: "rgba(0, 140, 255,1)",
+      //   backgroundColor: "rgba(0, 140, 255,0.4)",
+      //   pointHoverBackgroundColor: "rgba(0, 140, 255,1)",
+      //   pointHoverBorderColor: "rgba(20, 140, 255,1)",
+      //   pointBackgroundColor: "rgba(20, 140, 255,1)",
+      //   borderCapStyle: "rgba(20, 140, 255,1)",
+      //   type: "bar",
+      //   yAxisID: "y1",
+      // },
     ],
   };
 
@@ -151,34 +149,33 @@ const DailyWeather = (props: {
     pointBorderColor: "rgba(75,192,192,1)",
     pointBackgroundColor: "rgba(75,192,192,1)",
     borderCapStyle: "rgba(75,192,192,1)",
-    config: {
-      scales: {
-        y: {
-          title: {
-            text: "Temperature",
-            display: true,
-          },
-          type: "linear",
-          display: true,
-          position: "left",
-        },
-        y1: {
-          title: {
-            text: "Rain",
-            display: true,
-          },
-          type: "linear",
-          display: true,
-          position: "right",
-          grid: {
-            drawOnChartArea: false,
-          },
-        },
-      },
-    },
+    // scales: {
+    //   y: {
+    //     title:{
+    //       text: "Temperature",
+    //       display: true
+    //     },
+    //     type: "linear",
+    //     display: true,
+    //     position: "left",
+    //   },
+    //   y1: {
+    //     title:{
+    //       text: "Rain",
+    //       display: true
+    //     },
+    //     type: "linear",
+    //     display: true,
+    //     position: "right",
+    //     grid: {
+    //       drawOnChartArea: false,
+    //     },
+    //   },
+    // },
   };
 
   return (
+    // Shows error but works fine, might be library issue. Caused by providing Dataset different options and custom scales in config.
     <Line
       data={data}
       width={300}
