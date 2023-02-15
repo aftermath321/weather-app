@@ -117,15 +117,17 @@ const DailyWeather = (props: {
           props.weather?.hourly.rain[22 + props.day * 24],
           props.weather?.hourly.rain[23 + props.day * 24],
         ],
-        borderColor: `rgba(0, 140, 255, 1)`,
-        pointBorderColor: "rgba(0, 140, 255,1)",
-        backgroundColor: "rgba(0, 140, 255,0.4)",
-        pointHoverBackgroundColor: "rgba(0, 140, 255,1)",
-        pointHoverBorderColor: "rgba(20, 140, 255,1)",
-        pointBackgroundColor: "rgba(20, 140, 255,1)",
-        borderCapStyle: "rgba(20, 140, 255,1)",
-        type: "bar",
-        yAxisID: "y1",
+        options: {
+          borderColor: `rgba(0, 140, 255, 1)`,
+          pointBorderColor: "rgba(0, 140, 255,1)",
+          backgroundColor: "rgba(0, 140, 255,0.4)",
+          pointHoverBackgroundColor: "rgba(0, 140, 255,1)",
+          pointHoverBorderColor: "rgba(20, 140, 255,1)",
+          pointBackgroundColor: "rgba(20, 140, 255,1)",
+          borderCapStyle: "rgba(20, 140, 255,1)",
+          type: "bar",
+          yAxisID: "y1",
+        },
       },
     ],
   };
@@ -149,33 +151,34 @@ const DailyWeather = (props: {
     pointBorderColor: "rgba(75,192,192,1)",
     pointBackgroundColor: "rgba(75,192,192,1)",
     borderCapStyle: "rgba(75,192,192,1)",
-    scales: {
-      y: {
-        title:{
-          text: "Temperature",
-          display: true
+    config: {
+      scales: {
+        y: {
+          title: {
+            text: "Temperature",
+            display: true,
+          },
+          type: "linear",
+          display: true,
+          position: "left",
         },
-        type: "linear",
-        display: true,
-        position: "left",
-      },
-      y1: {
-        title:{
-          text: "Rain",
-          display: true
-        },
-        type: "linear",
-        display: true,
-        position: "right",
-        grid: {
-          drawOnChartArea: false,
+        y1: {
+          title: {
+            text: "Rain",
+            display: true,
+          },
+          type: "linear",
+          display: true,
+          position: "right",
+          grid: {
+            drawOnChartArea: false,
+          },
         },
       },
     },
   };
 
   return (
-    // Shows error but works fine, might be library issue. Caused by providing Dataset different options and custom scales in config.
     <Line
       data={data}
       width={300}
