@@ -12,9 +12,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Future
+## Live version
 
-I am planning on deploying the app on Vercel, I will update this file accordingly and link to the live demo on my webpage (www.michalkielbasa.com).
+You can find the live version at:
+
+https://weather-app-ua3y.vercel.app/
 
 ## Assets
 
